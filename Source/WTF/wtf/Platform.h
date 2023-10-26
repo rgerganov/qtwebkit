@@ -243,6 +243,10 @@
     || defined(__ARM_ARCH_7S__)
 #define WTF_ARM_ARCH_VERSION 7
 
+#elif defined(__ARM_ARCH_8__) \
+    || defined(__ARM_ARCH_8A__)
+#define WTF_ARM_ARCH_VERSION 8
+
 /* MSVC sets _M_ARM */
 #elif defined(_M_ARM)
 #define WTF_ARM_ARCH_VERSION _M_ARM

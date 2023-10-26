@@ -46,7 +46,7 @@ public:
         return StateFlags(StencilState) | ColorState | BlendState;
     }
 
-    virtual void render(const RenderState& state)
+    virtual void render(const RenderState *state)
     {
         TransformationMatrix renderMatrix;
         if (pageNode()->devicePixelRatio() != 1.0) {
@@ -58,7 +58,7 @@ public:
 
         // When rendering to an intermediate surface, Qt will
         // mirror the projection matrix to fit on the destination coordinate system.
-        const QMatrix4x4* projection = state.projectionMatrix;
+        const QMatrix4x4* projection = state->projectionMatrix();
         bool mirrored = projection && (*projection)(0, 0) * (*projection)(1, 1) - (*projection)(0, 1) * (*projection)(1, 0) > 0;
 
         // FIXME: Support non-rectangular clippings.
