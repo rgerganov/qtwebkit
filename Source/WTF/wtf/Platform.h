@@ -243,6 +243,10 @@
     || defined(__ARM_ARCH_7S__)
 #define WTF_ARM_ARCH_VERSION 7
 
+#elif defined(__ARM_ARCH_8__) \
+    || defined(__ARM_ARCH_8A__)
+#define WTF_ARM_ARCH_VERSION 8
+
 /* MSVC sets _M_ARM */
 #elif defined(_M_ARM)
 #define WTF_ARM_ARCH_VERSION _M_ARM
@@ -763,6 +767,9 @@
 #define WTF_USE_JSVALUE32_64 1
 #endif
 #endif /* !defined(WTF_USE_JSVALUE64) && !defined(WTF_USE_JSVALUE32_64) */
+
+// disable JIT explicitly
+#define ENABLE_JIT 0
 
 /* Disable the JIT on versions of GCC prior to 4.1 */
 #if !defined(ENABLE_JIT) && COMPILER(GCC) && !GCC_VERSION_AT_LEAST(4, 1, 0)
