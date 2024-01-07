@@ -53,6 +53,7 @@ using namespace XPath;
 
 %pure_parser
 %parse-param { WebCore::XPath::Parser* parser }
+%define api.header.include { "XPathGrammar.h" }
 
 %union
 {
